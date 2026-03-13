@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rising Habit Hero</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero-panel">
+        <h1>🛡️ Rising Habit Hero</h1>
+        <p>
+          Train like an isekai protagonist: complete quests to gain levels and let
+          failures chip away at your stats.
+        </p>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <h2>Level</h2>
+            <p id="levelValue">1</p>
+          </article>
+          <article class="stat-card">
+            <h2>XP</h2>
+            <p><span id="xpValue">0</span>/<span id="xpGoal">100</span></p>
+            <div class="xp-bar"><div id="xpFill"></div></div>
+          </article>
+          <article class="stat-card">
+            <h2>Shield Integrity</h2>
+            <p id="shieldValue">100%</p>
+          </article>
+          <article class="stat-card">
+            <h2>Morale</h2>
+            <p id="moraleValue">Steady</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="quest-panel">
+        <div class="quest-header">
+          <h2>Daily Quests</h2>
+          <button id="addQuestBtn" type="button">+ Add Quest</button>
+        </div>
+        <form id="questForm" class="quest-form" hidden>
+          <label>
+            Quest Name
+            <input id="questInput" type="text" maxlength="80" placeholder="Study 45 minutes" required />
+          </label>
+          <label>
+            Reward XP
+            <input id="xpInput" type="number" min="10" max="300" step="10" value="40" required />
+          </label>
+          <button type="submit">Forge Quest</button>
+        </form>
+        <ul id="questList"></ul>
+      </section>
+    </main>
+
+    <template id="questTemplate">
+      <li class="quest-item">
+        <div>
+          <h3 class="quest-title"></h3>
+          <p class="quest-meta"></p>
+        </div>
+        <div class="quest-actions">
+          <button class="complete-btn" type="button">✅ Complete</button>
+          <button class="fail-btn" type="button">❌ Missed</button>
+          <button class="delete-btn" type="button">🗑 Remove</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

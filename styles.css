@@ -1,0 +1,179 @@
+:root {
+  color-scheme: dark;
+  --bg: #10131f;
+  --panel: #1a2238;
+  --panel-highlight: #26365d;
+  --text: #eff3ff;
+  --accent: #65d1ff;
+  --good: #64f4a1;
+  --bad: #ff7d91;
+  --warning: #ffcd67;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1b2440 0%, var(--bg) 45%, #090b14 100%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 980px;
+  margin: 2rem auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.hero-panel,
+.quest-panel {
+  background: linear-gradient(160deg, rgba(37, 52, 88, 0.95), rgba(15, 18, 29, 0.95));
+  border: 1px solid rgba(116, 169, 255, 0.25);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.hero-panel p {
+  margin-top: 0.5rem;
+  color: #d7deff;
+}
+
+.stats-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.stat-card {
+  background: var(--panel-highlight);
+  border: 1px solid rgba(180, 201, 255, 0.22);
+  border-radius: 12px;
+  padding: 0.8rem;
+}
+
+.stat-card h2 {
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  color: #c7daff;
+}
+
+.stat-card p {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.xp-bar {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  margin-top: 0.6rem;
+  overflow: hidden;
+}
+
+#xpFill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #5fe0ff, #71ffba);
+  transition: width 200ms ease;
+}
+
+.quest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.52rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#addQuestBtn,
+.quest-form button {
+  background: #68d5ff;
+  color: #03131f;
+}
+
+.quest-form {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: var(--panel);
+  border-radius: 12px;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.quest-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.quest-form input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0f1527;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+#questList {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.quest-item {
+  background: var(--panel);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.quest-meta {
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+  color: #b6c2ea;
+}
+
+.quest-actions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.complete-btn {
+  background: var(--good);
+}
+
+.fail-btn {
+  background: var(--bad);
+}
+
+.delete-btn {
+  background: var(--warning);
+}
