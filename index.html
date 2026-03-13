@@ -9,15 +9,18 @@
   <body>
     <main class="app">
       <section class="hero-panel">
-        <h1>🛡️ Rising Habit Hero</h1>
+        <h1>🌸 Rising Habit Hero: Anime Ascension</h1>
         <p>
-          Train like an isekai protagonist: complete quests to gain levels and let
-          failures chip away at your stats.
+          Train like a shonen icon: clear quests, evolve your aura, and unlock legendary anime forms.
         </p>
         <div class="stats-grid">
           <article class="stat-card">
             <h2>Level</h2>
             <p id="levelValue">1</p>
+          </article>
+          <article class="stat-card">
+            <h2>Anime Form</h2>
+            <p id="characterValue">Sakura Kinomoto</p>
           </article>
           <article class="stat-card">
             <h2>XP</h2>
@@ -38,7 +41,12 @@
       <section class="quest-panel">
         <div class="quest-header">
           <h2>Daily Quests</h2>
-          <button id="addQuestBtn" type="button">+ Add Quest</button>
+          <div class="header-actions">
+            <button id="addQuestBtn" type="button">+ Add Quest</button>
+            <button id="exportCsvBtn" type="button">⬇ Export CSV</button>
+            <button id="importCsvBtn" type="button">⬆ Import CSV</button>
+            <input id="csvFileInput" type="file" accept=".csv,text/csv" hidden />
+          </div>
         </div>
         <form id="questForm" class="quest-form" hidden>
           <label>
@@ -46,12 +54,32 @@
             <input id="questInput" type="text" maxlength="80" placeholder="Study 45 minutes" required />
           </label>
           <label>
+            Category
+            <select id="categoryInput" required>
+              <option value="training">⚔️ Training</option>
+              <option value="study">📚 Study</option>
+              <option value="wellness">💖 Wellness</option>
+              <option value="creative">🎨 Creative</option>
+              <option value="social">🤝 Social</option>
+            </select>
+          </label>
+          <label>
             Reward XP
             <input id="xpInput" type="number" min="10" max="300" step="10" value="40" required />
           </label>
           <button type="submit">Forge Quest</button>
         </form>
+        <p id="importStatus" class="import-status" aria-live="polite"></p>
         <ul id="questList"></ul>
+      </section>
+
+      <section class="history-panel">
+        <div class="history-header">
+          <h2>Recent Battle Log</h2>
+          <button id="clearHistoryBtn" type="button">Clear Log</button>
+        </div>
+        <p class="history-help">Undo a recently completed or missed task.</p>
+        <ul id="historyList"></ul>
       </section>
     </main>
 
@@ -66,6 +94,16 @@
           <button class="fail-btn" type="button">❌ Missed</button>
           <button class="delete-btn" type="button">🗑 Remove</button>
         </div>
+      </li>
+    </template>
+
+    <template id="historyTemplate">
+      <li class="history-item">
+        <div>
+          <p class="history-title"></p>
+          <p class="history-meta"></p>
+        </div>
+        <button class="undo-btn" type="button">↩ Undo</button>
       </li>
     </template>
 
